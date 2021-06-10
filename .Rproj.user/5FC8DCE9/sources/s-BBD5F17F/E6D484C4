@@ -1,0 +1,32 @@
+{
+    "id": "E6D484C4",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1623343321893.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "expression": "APDF",
+        "caption": "APDF",
+        "totalObservations": "316",
+        "displayedObservations": "316",
+        "variables": "8",
+        "cacheKey": "5FAB81E7",
+        "object": "APDF",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=APDF&cache_key=5FAB81E7&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2459000718892870705,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1623343321893,
+    "read_only": false,
+    "read_only_alternatives": []
+}
