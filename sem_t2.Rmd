@@ -150,6 +150,11 @@ library(readr)
 
 <!-- DESCRIPCIÓN DEL PROBLEMA EN FUNCIÓN DE LO QUE ECRIBIÓ EL PROFESOR. -->
 
+
+El Proyecto para el Desarrollo de la familia y el adolescente ( _The Adolescente and FAmily Development Project_, en los Estados Unidos) diseñó una investigación que tiene por objetivo "evaluar la asociación entre el alcoholismo de los padres y el uso de sustancias en adolescentes y psicopatologías" (Zamora, 2021). Para tal propósito, se levantó una muestra aleatoria integrada por  316 adolescentes. Adempás, la muestra es compuesta íntegramente por variables medidas, por lo que se realiza un Análisis de Trayectoria (o _Path Analysis_), lo cuál requiere que haya teorías y conceptos de área que respalden la investigación.
+
+Específicamente, se parte de la siguiente teorización. Los padres alcohólicos ( _coa_ ) inciden en vidas con efectos estresantes ( _stress_ ) para las y los hijos, lo que aumenta la percepción de depresión y ansiedad en los adolescentes ( _negaff_ ). Además, se considera que las familias alcoholicas provoca en los jóvenes  falta de control emocional ( _emotion_ ), lo que incrementa depresión y ansiedad ( _negaff_ )en estos últimos. Entonces, se podría argüir que eventos estresantes ( _stress_ ) tiene una relación no direccional con falta de control emocional ( _emotion_ ).  En complemento a lo anterior, los resutlados negativos, como ansiedad y depresión, generan tasas altas de convivencia con compañeros que consumen drogas ( _peer_ ), lo que podría generar adicciones. Finalmente, se considera que el estres ( _stres_ ) y la dificultad emocional ( _emotion_ ) son predichas por la edad ( _age_ ) y el sexo ( _gen_ ). 
+
 A continuación se muestra una tabla con el *nombre de variables*, sus *siglas*, a manera de codificación, y las variables que representan.
 
 ```{r, include=FALSE}
@@ -260,35 +265,55 @@ CorMid <- '
 -0.09456621 1.0
 0.01400000  0.12159467   1.0
 0.41430068 -0.01973430  -0.01121133 1.0
-0.14398422 -0.08074436  -0.04854675   0.36647960 1.0
-0.10279496  0.15121667  -0.12520711  0.28079050  0.35387788 1.0
-0.20542024  0.39572236 -0.10289694  0.24024930  0.13368237  0.3145978  1.0
+0.14398422 -0.08074436  -0.04854675   0.3664796 1.0
+0.10279496  0.15121667  -0.12520711  0.2807905  0.35387788 1.0
+0.20542024  0.39572236 -0.10289694  0.2402493  0.13368237  0.3145978  1.0
 '
+# corCuad <- matrix(data = c(c(1, -0.09456621, 0.014, 0.41430068, 0.14398422, 0.10279496, 0.20542024),
+#                 c(-0.09456621, 1, 0.12159467, -0.01973430, -0.08074436, 0.15121667, 0.39572236 ),
+#                 c(0.014, 0.12159467, 1, -0.01121133, -0.04854675, -0.12520711, -0.10289694),
+#                 c(0.41430068, -0.01973430 , -0.01121133, 1, 0.3664796, 0.2807905, 0.2402493),
+#                 c(0.14398422, -0.08074436, -0.04854675, 0.3664796, 1, 0.35387788, 0.13368237 ),
+#                 c(0.10279496, 0.15121667, -0.12520711, 0.2807905, 0.35387788, 1, 0.3145978),
+#                 c(0.20542024, 0.39572236, -0.10289694,0.2402493 , 0.13368237, 0.3145978, 1)
+#                 ),7,7)
 
 comp.cor1 <- getCov(CorMid, sds = NULL, names = c("coa", "age", "gen", "stress", "emotion", "negaff", "peer"))
 
 #Modelo teórico
-
 
 mod1 <- '
 stress ~ a*coa + b*gen + c*age
 emotion ~ e*coa + f*gen + g*age
 negaff ~ x*stress + y*emotion
 peer ~ z*negaff
+
 emotion ~~ stress
 coa ~~ gen
 gen ~~ age
 coa ~~ age
+
+#Efectos indirectos
+
+NegStresCoa := x*a
+NegStresGen := x*b
+NegStresAge := x*c
+NegEmoCoa := y*e
+NegEmoGen := y*f
+NegEmoAge := y*g
+PeNegStresCoa := z*x*a
+PeNegEmoCoa := z*y*e
+
+#Efetos Totales
+T1 := a + x*a + z*x*a
+T2 := a + y*e + z*y*e
 '
-
-# ###Efectos indirectos
-# ###Efectos totales
-
-
 
 n <- length(bd$coa)
 sem1 <- sem(mod1, data = bd, sample.cov = comp.cor1, sample.nobs = n, se="bootstrap")
 sem2 <- sem(mod1, data = bd, sample.cov = personc, sample.nobs = n, se="bootstrap")
+
+summary(sem1, fit.measures = TRUE,standardized=T)
 
 # 
 # summary(modelo, fit.measures = TRUE,standardized=T)
@@ -301,6 +326,7 @@ semPaths(sem1, "mod","par", col=rainbow(7), style="lisrel", layout = "tree2",cur
 legend("topleft", legend=c("Modelo de trayectoria: Bulimia"),col="blue",cex=1.5)
 
 ```
+
 
 
 # Escribirlo matricialmente
@@ -389,7 +415,9 @@ Cabe destacar que $\Psi$ representa la matriz de correlación entre variables en
 
 # Ajuste del modelo
 
-La estimación del modelo emplea el método bootstrap, como alternativa a las restricciones del supuesto de normalidad por el método delta. Lo anterior requiere que la muestra esté disponible para realizar el remuestreo (Hallquist, 2019). Además, se emplean la paquetería _lavaan_ como principal instrumento de ajuste computaciones. A continuación se muestra el código empleado.
+La estimación del modelo emplea el método bootstrap, como alternativa a las restricciones del supuesto de normalidad por el método delta. Lo anterior requiere que la muestra esté disponible para realizar el remuestreo (Hallquist, 2019). 
+
+Además, se emplean la paquetería _lavaan_ como principal instrumento de ajuste computaciones, y se usa la información de la matriz de correlación de Pearson, biserial y tetracórica, según corresponda el tipo de variable. Se tienen 20 grados de libertad, lo que corresponde a las parte de información. A continuación se muestra el código empleado.
 
 ```{r}
 
@@ -404,7 +432,75 @@ summary(sem1, fit.measures = TRUE,standardized=T)
 fitmeasures(sem1)
 
 ```
+La estimación se los parámetros se muestra a continuación:
+
 # Verifique lo adecuado del ajuste
+
+A fin de verificar el ajuste del modelo, se deben considerar los índices de bondad de ajuste (GoF, por sus siglas en Inglés). 
+
+La prueba de la $\chi^2$ rechaza la hipótesis nula, donde $H_{o} : ModeloSíAjusta$, es decir que el modelo no ajusta a los datos. Debido a que el Pvalor es mucho menor que la significancia.  Sin embargo, el modelo basal es mucho peor que el propuesto. 
+
+User Model:
+                                                      
+  Test statistic                                81.173
+  Degrees of freedom                                 8
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                               255.823
+  Degrees of freedom                                21
+  P-value                                        0.000
+
+
+\begin{center}
+\begin{table}[h]
+\centering
+\begin{threeparttable}
+\caption{Índices de ajuste del modelo}
+\label{ajusteIndonesia}
+\begin{tabular}{lllll}
+	\toprule
+     CFI &      TLI &    RMSEA & Pvalue RMSEA & SRMR\\
+     0.688 &  0.182 &   0.17      & 0.0          & 0.095\\
+	\bottomrule
+\end{tabular}
+\end{threeparttable}
+    
+\end{table}
+\end{center}
+
+
+\begin{itemize}
+	\item CFI: Es el \textbf{\textit{Comparative Fit Index}}, en que este modelo tiene un valor muy pequeño. Por lo que se puede sostener que el modelo es muy malo. Además, para valores " mayor 0.97 es indicativo de un buen ajuste en relación con el modelo de independencia" (Zamora, 2021).
+	\item NNFI ,también conocido como TLI, es decir, "ındice de ajuste no normalizado (NNFI), también conocido como el índice de Tuker-Lewis (TLI)". Este modelo tiene un valor muy pequeño, lo que indica que el modelo es malo. Ya que " valores superiores a 0.95 pueden interpretarse como un ajuste aceptable" (Zamora, 2021).
+	\item RMSEA, significa error cuadrático medio de aproximación de la raíz. Donde valores mayores a 0.1, implican valores de ajuste medriocres, por lo que este modelo no es bueno.
+	\item Pvalur RMSEA, implica que el valor puntual de RMSAE sea contenido por un intervalor de confianza del 95%. Dado que se rechaza la hipótesis nula, de descarta que el modelo ajuste.
+	\item SRMR, o ındice de la raís del cuadrado medio del residuo estandarizado, "valores de SRMR menores a 0.05 evidencian un buen ajuste y que menores a 0.10 pueden interpretarse como un ajuste aceptable"  (Zamora, 2021). Por lo que se puede afirmar que este modelo tiene un ajuste aceptable. 
+
+\end{itemize}
+
+Por lo anterior es posible afirmar que el modelo, en general, no ajusta. Es decir, los datos no respaldan la teoría propuesta. Entonces, se sugiere modificar las relaciones entre variables, siempre y cuando esté mediada por conocimiento de área experta. 
 
 # Interpretar efectos directos, indirectos, totales y concluir
 
+
+```{r, SEMReajustado}
+
+mod2v <- '
+stress ~ a*coa
+emotion ~ e*coa 
+negaff ~ x*stress + y*emotion
+peer ~ z*negaff
+
+emotion ~~ stress
+'
+
+sem3v <- sem(mod2v, data = bd, sample.cov = comp.cor1, sample.nobs = n, se="bootstrap")
+summary(sem3v, fit.measures = TRUE,standardized=T)
+
+semPaths(sem3v, "mod","par", col=rainbow(5), style="lisrel", layout = "tree2",curve=1.5,curvePivot = TRUE,rotation = 2, label.cex=1.2, residuals = T, nDigits = 4, nCharNodes = 0, sizeMan = 10, sizeMan2 = 5)
+legend("topright", legend=c("Modelo de trayectoria: Reajustado"),col="blue",cex=1.1)
+
+
+```
