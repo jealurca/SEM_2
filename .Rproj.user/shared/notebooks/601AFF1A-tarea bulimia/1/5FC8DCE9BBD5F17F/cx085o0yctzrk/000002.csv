@@ -1,5 +1,0 @@
-"0","modelo <- sem(modelPath, sample.cov = comp.cor1, sample.nobs = n, se=""bootstrap"")
-"
-"2","Error in lavaan::lavaan(model = modelPath, sample.cov = comp.cor1, sample.nobs = n,  : 
-  objeto 'modelPath' no encontrado
-"
