@@ -169,7 +169,7 @@ bdCon <- bd[,c(2,4:7)]
 Dado que se cuenta con la base de datos se procede a hacer estadística descriptiva. Todas las variables son numéricas, pero _coa_ y _gen_ son variables dicotómias, donde $P(X|x_{coa}=0: Padres no alcoholicos)$, y $P(X|x_{gen} = 0 : Mujer)$, respectivamente. 
 Además, las variables, _Stress_ , _emotion_ , _negaff_ y _peer_ son variables continuas, que parecen ser tasas o índices, ya que tienen valores positivos y menores de 6. Cabe destacar que no se cuenta con un diccionario de datos.
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 str(bd)
 summary(bd)
 plot(bd[,4:7])
@@ -323,7 +323,7 @@ summary(sem1, fit.measures = TRUE,standardized=T)
 
 
 semPaths(sem1, "mod","par", col=rainbow(7), style="lisrel", layout = "tree2",curve=1.5,curvePivot = TRUE,rotation = 2, label.cex=1.2, residuals = T, nDigits = 4, nCharNodes = 0, sizeMan = 10, sizeMan2 = 5)
-legend("topleft", legend=c("Modelo de trayectoria: Bulimia"),col="blue",cex=1.5)
+legend("topleft", legend=c("Consumo sustancia por padres alcohlicos y psicopatologías"),col="blue",cex=1.5)
 
 ```
 
@@ -482,7 +482,10 @@ Model Test Baseline Model:
 
 Por lo anterior es posible afirmar que el modelo, en general, no ajusta. Es decir, los datos no respaldan la teoría propuesta. Entonces, se sugiere modificar las relaciones entre variables, siempre y cuando esté mediada por conocimiento de área experta. 
 
-# Interpretar efectos directos, indirectos, totales y concluir
+Dado lo anterior se propone reestructurar el modelo en función de conocimiento experto. Donde las únicas variables que medien el modelo sean el hecho que los padres sean alcoholicos ( _coa_ ), su efecto sobre eventos estresantes ( _stres_ ) y sobre falta de control de emociones ( _emotion_ ) ambas en los adolescentes. Y la incidencia de las anteriores sobre ansiedad y depresión ( _negaff_ ), y su vez sobre el consumo de sustancia ( _peer_). 
+
+Entonces, la graficación del modelo quedaría como sigue. Respecto a la forma de estimación del modelo sigue los mismo procesos que el anterior modelo. Y a continuación se muestran los índices de bondad de ajute. 
+
 
 
 ```{r, SEMReajustado}
@@ -504,3 +507,7 @@ legend("topright", legend=c("Modelo de trayectoria: Reajustado"),col="blue",cex=
 
 
 ```
+
+# Interpretar efectos directos, indirectos, totales y concluir
+
+Si se parte del segundo modelo teórico, es posible interpretar los efectos, como se menciona a continuación. 
