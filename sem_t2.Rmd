@@ -203,11 +203,11 @@ corCuad <- matrix(data = c(c(1, -0.09456621, 0.014, 0.41430068, 0.14398422, 0.10
                 ),7,7)
 
 
+personc <- cor(bd)
 #Si quieres, agregar una matriz o dataframa para que se pueda hacer el correlograma.
 ```
 
 ```{r, include = TRUE, echo = FALSE, fig.pos = 'H', fig.dim = c(8,5), fig.align = "center", message=FALSE}
-#scale(frameBase$dp, center = T, scale = T) #si quisieramos agregar variable bd
 par(mfrow = c(2,1))
 #cor_base <- cor(corCuad, use="complete.obs")
 cor.mtest <- function(mat, ...) {
@@ -253,21 +253,11 @@ corrplot(cor_base, type = "upper", order = "hclust", tl.col = "black", tl.srt = 
 
 # Diagramar modelo
 
-# Escribirlo matricialmente
-
-# Escribir matrices involucradas en modelo
-
-# Ajuste del modelo
-
-# Verifique lo adecuado del ajuste
-
-# Interpretar efectos directos, indirectos, totales y concluir
-
 ```{r, diagramarSEM}
 
 CorMid <- '
 1.0
--.09456621 1.0
+-0.09456621 1.0
 0.01400000  0.12159467   1.0
 0.41430068 -0.01973430  -0.01121133 1.0
 0.14398422 -0.08074436  -0.04854675   0.36647960 1.0
@@ -276,7 +266,6 @@ CorMid <- '
 '
 
 comp.cor1 <- getCov(CorMid, sds = NULL, names = c("coa", "age", "gen", "stress", "emotion", "negaff", "peer"))
-comp.cor1
 
 #Modelo teórico
 
@@ -286,6 +275,7 @@ stress ~ a*coa + b*gen + c*age
 emotion ~ e*coa + f*gen + g*age
 negaff ~ x*stress + y*emotion
 peer ~ z*negaff
+emotion ~~ stress
 coa ~~ gen
 gen ~~ age
 coa ~~ age
@@ -298,6 +288,8 @@ coa ~~ age
 
 n <- length(bd$coa)
 sem1 <- sem(mod1, data = bd, sample.cov = comp.cor1, sample.nobs = n, se="bootstrap")
+sem2 <- sem(mod1, data = bd, sample.cov = personc, sample.nobs = n, se="bootstrap")
+
 # 
 # summary(modelo, fit.measures = TRUE,standardized=T)
 # #resumen <- summary(modelo, fit.measures = TRUE,standardized=T)
@@ -310,4 +302,109 @@ legend("topleft", legend=c("Modelo de trayectoria: Bulimia"),col="blue",cex=1.5)
 
 ```
 
+
+# Escribirlo matricialmente
+
+
+
+
+\begin{align*}
+Y_{stres} = 0Y_{stres} + 0Y_{emo} + 0Y_{neg} + 0Y_{peer} + \gamma_{1,1}X_{coa} + \gamma_{1,2} X_{gen} +  \gamma_{1,3} X_{age} + \varsigma_{1} \\
+Y_{emo} = 0 Y_{stres} + 0Y_{emo} + 0Y_{neg}  + 0Y_{peer} + \gamma_{2,1}X_{coa} + \gamma_{2,2}X_{gen} + \gamma_{2,3}X_{age} + \varsigma_{2}\\
+Y_{neg} = \beta_{1,1} Y_{stres} + \beta_{1,2}Y_{emo} + 0Y_{neg}  + 0Y_{peer} + 0X_{coa} + 0X_{gen} + 0X_{age} + \varsigma_{3} \\
+Y_{emo} = 0Y_{stres} + 0Y_{emo} + \beta_{2,1}Y_{neg}  + + 0Y_{peer} + 0X_{coa} + 0X_{gen} + 0X_{age} + \varsigma_{4}
+\end{align*}
+
+
+
+\begin{align*}
+\begin{bmatrix}
+Y_{stre}\\
+Y_{emo}\\
+Y_{neg}\\
+Y_{peer}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\beta_{1,1} & \beta_{1,2} & 0 & 0 \\
+0 & 0 & \beta_{2,1} & 0
+\end{bmatrix}
+\begin{bmatrix}
+Y_{stre}\\
+Y_{emo}\\
+Y_{neg}\\
+Y_{peer}
+\end{bmatrix}
++
+\begin{bmatrix}
+\gamma_{1,1} & \gamma_{1,2} & \gamma_{1,3} \\
+\gamma_{2,1} & \gamma_{2,2} & \gamma_{2,3} \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+X_{coa}\\
+X_{gen} \\
+X_{age}
+\end{bmatrix}
++
+\begin{bmatrix}
+\varsigma_{1}\\
+\varsigma_{2}\\
+\varsigma_{3}\\
+\varsigma_{4}
+\end{bmatrix}
+\end{align*}
+
+
+ 
+
+# Escribir matrices involucradas en modelo
+
+Además, respéctivamente, cada matriz presentada con anterioridad puede se expresada como:
+$Y = B Y + \Gamma x + \zeta$\\
+
+
+\begin{align*}
+		\mathbf{\Psi} =
+	\begin{bmatrix}
+		\psi_{1,1}	&   0           &  0    &   0 \\
+		\psi_{2,1}    &   \psi_{2,2}  &  0   &  0\\
+		0			&        	0			&  \psi_{3,1} & 0\\
+		0 & 0 & 0 &   \psi_{4,1}\\
+	\end{bmatrix}
+	\;
+	\mathbf{\Phi} =
+	\begin{bmatrix}
+		\phi_{1,1}    &   0              &  0   \\
+		\phi_{2,1}    &   \phi_{2,2}     & 0 \\
+		\phi_{3,1}    &   \phi_{3,2}     &   \phi_{3,3}    \\
+	\end{bmatrix}
+\end{align*}
+
+Cabe destacar que $\Psi$ representa la matriz de correlación entre variables endógenas ($Y_{i}$). Mientras que la matriz de $\Phi$ presenta a la correlación entre variables exógenas ($X_{i}$).
+
+
+# Ajuste del modelo
+
+La estimación del modelo emplea el método bootstrap, como alternativa a las restricciones del supuesto de normalidad por el método delta. Lo anterior requiere que la muestra esté disponible para realizar el remuestreo (Hallquist, 2019). Además, se emplean la paquetería _lavaan_ como principal instrumento de ajuste computaciones. A continuación se muestra el código empleado.
+
+```{r}
+
+# CorMid 
+# comp.cor1 <- getCov(CorMid, sds = NULL, names = c("coa", "age", "gen", "stress", "emotion", "negaff", "peer")
+# mod1 
+# sem1 <- sem(mod1, data = bd, sample.cov = comp.cor1, sample.nobs = n, se="bootstrap")
+
+
+summary(sem1, fit.measures = TRUE,standardized=T)
+#resumen <- summary(modelo, fit.measures = TRUE,standardized=T)
+fitmeasures(sem1)
+
+```
+# Verifique lo adecuado del ajuste
+
+# Interpretar efectos directos, indirectos, totales y concluir
 

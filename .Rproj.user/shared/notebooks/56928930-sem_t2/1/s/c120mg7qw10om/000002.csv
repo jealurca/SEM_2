@@ -1,7 +1,6 @@
-"0","APDF <- read_csv(""bd/APDF.csv"")
-"
+"0","APDF <- read_csv(""bd/APDF.csv"")"
 "2","
-[36m--[39m [1m[1mColumn specification[1m[22m [36m---------------------------------------------------------[39m
+[36m--[39m [1m[1mColumn specification[1m[22m [36m------------------------------------------------------------------------------[39m
 cols(
   id = [32mcol_double()[39m,
   coa = [32mcol_double()[39m,
@@ -14,3 +13,6 @@ cols(
 )
 
 "
+"0","View(APDF)"
+"0","bd <- APDF[,2:8]"
+"0","bdCon <- bd[,c(2,4:7)]"
