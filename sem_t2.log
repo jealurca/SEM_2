@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.27)  11 JUN 2021 11:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.27)  14 JUN 2021 18:34
 entering extended mode
 **./sem_t2.tex
 (sem_t2.tex
@@ -757,143 +757,147 @@ Package pdftex.def Info: images/iimas.jpg  used on input line 182.
 {C:/Users/Jesus/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./images/iimas.
 jpg>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 218.
+(Font)              <10> on input line 190.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 218.
+(Font)              <7> on input line 190.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 218.
+(Font)              <5> on input line 190.
+
+LaTeX Warning: Command \' invalid in math mode on input line 210.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 210.
+
 <sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf, id=14, 578.16pt x 361.35pt>
 File: sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf  used 
-on input line 232.
+on input line 252.
 (pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 237.
+Package pdftex.def Info: images/iimas.jpg  used on input line 252.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[2 <./sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-38.
-("C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd"
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-239.
-("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmtt.fd"
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 257.
-
-Overfull \vbox (1.88034pt too high) detected at line 294
- []
-
+[2]
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 294.
+Package pdftex.def Info: images/iimas.jpg  used on input line 323.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[3]
-File: images/iimas.jpg Graphic file (type jpg)
-<use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 397.
-(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[4]
-Underfull \vbox (badness 10000) detected at line 411
- []
-
-File: images/iimas.jpg Graphic file (type jpg)
-<use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 411.
-(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[5]
-<sem_t2_files/figure-latex/diagramarSEM-1.pdf, id=48, 469.755pt x 325.215pt>
+[3 <./sem_t2_files/figure-latex/unnamed-chunk-5-1.pdf>]
+<sem_t2_files/figure-latex/diagramarSEM-1.pdf, id=39, 469.755pt x 325.215pt>
 File: sem_t2_files/figure-latex/diagramarSEM-1.pdf Graphic file (type pdf)
 <use sem_t2_files/figure-latex/diagramarSEM-1.pdf>
 Package pdftex.def Info: sem_t2_files/figure-latex/diagramarSEM-1.pdf  used on 
-input line 413.
+input line 323.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 488.
+Package pdftex.def Info: images/iimas.jpg  used on input line 326.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[6 <./sem_t2_files/figure-latex/diagramarSEM-1.pdf>]
+[4]
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 622.
+Package pdftex.def Info: images/iimas.jpg  used on input line 398.
+(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
+[5 <./sem_t2_files/figure-latex/diagramarSEM-1.pdf>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
+63.
+("C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+File: images/iimas.jpg Graphic file (type jpg)
+<use images/iimas.jpg>
+Package pdftex.def Info: images/iimas.jpg  used on input line 564.
+(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
+[6]
+File: images/iimas.jpg Graphic file (type jpg)
+<use images/iimas.jpg>
+Package pdftex.def Info: images/iimas.jpg  used on input line 564.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
 [7]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 575.
+
+LaTeX Warning: Command \' invalid in math mode on input line 576.
+
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 622.
+Package pdftex.def Info: images/iimas.jpg  used on input line 618.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
 [8]
-
-LaTeX Warning: Command \' invalid in math mode on input line 666.
-
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 669.
+Package pdftex.def Info: images/iimas.jpg  used on input line 714.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
 [9]
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 735.
+Package pdftex.def Info: images/iimas.jpg  used on input line 808.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
 [10]
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+839.
+("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmtt.fd"
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 852.
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 812.
+Package pdftex.def Info: images/iimas.jpg  used on input line 940.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
 [11]
-<sem_t2_files/figure-latex/SEMReajustado-1.pdf, id=95, 469.755pt x 325.215pt>
+File: images/iimas.jpg Graphic file (type jpg)
+<use images/iimas.jpg>
+Package pdftex.def Info: images/iimas.jpg  used on input line 942.
+(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
+[12]
+<sem_t2_files/figure-latex/SEMReajustado-1.pdf, id=111, 469.755pt x 325.215pt>
 File: sem_t2_files/figure-latex/SEMReajustado-1.pdf Graphic file (type pdf)
 <use sem_t2_files/figure-latex/SEMReajustado-1.pdf>
 Package pdftex.def Info: sem_t2_files/figure-latex/SEMReajustado-1.pdf  used on
- input line 821.
+ input line 949.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 File: images/iimas.jpg Graphic file (type jpg)
 <use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 830.
+Package pdftex.def Info: images/iimas.jpg  used on input line 951.
 (pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[12 <./sem_t2_files/figure-latex/SEMReajustado-1.pdf>]
-File: images/iimas.jpg Graphic file (type jpg)
-<use images/iimas.jpg>
-Package pdftex.def Info: images/iimas.jpg  used on input line 830.
-(pdftex.def)             Requested size: 85.36116pt x 44.34966pt.
-[13] (sem_t2.aux
+[13 <./sem_t2_files/figure-latex/SEMReajustado-1.pdf>] (sem_t2.aux
 LaTeX Info: Redefining \. on input line 26.
 LaTeX Info: Redefining \% on input line 26.
 ) ) 
 Here is how much of TeX's memory you used:
- 18379 strings out of 479799
- 277213 string characters out of 2879558
- 660827 words of memory out of 3000000
- 34928 multiletter control sequences out of 15000+200000
- 607606 words of font info for 108 fonts, out of 3000000 for 9000
+ 18493 strings out of 479799
+ 278485 string characters out of 2879558
+ 651889 words of memory out of 3000000
+ 34953 multiletter control sequences out of 15000+200000
+ 631267 words of font info for 156 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,18n,85p,788b,578s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 79i,18n,85p,788b,561s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKT
-eX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-
-mathex.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program F
+eX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm
+-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
 iles/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc
-/dvips/lm/lm-mathsy.enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.p
+/dvips/lm/lm-mathex.enc}<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.p
 fb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><
 C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKT
 eX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public
-/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Prog
-ram Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts
-/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
-lic/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:
-/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX
-/fonts/type1/public/lm/lmtti10.pfb>
-Output written on sem_t2.pdf (13 pages, 428557 bytes).
+/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts
+/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12
+.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files
+/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fon
+ts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lms
+y10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Program Fi
+les/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type
+1/public/lm/lmtt9.pfb>
+Output written on sem_t2.pdf (13 pages, 494310 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 14405 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
+ 18501 words of extra memory for PDF output out of 20736 (max. 10000000)
 
