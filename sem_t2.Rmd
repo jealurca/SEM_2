@@ -402,7 +402,6 @@ sem1 <- sem(mod1, data = bd ,sample.cov = comp.cor1, sample.nobs = n, se="bootst
 
 ###Modificaci?n de ?ndices
 
-modindices(sem1)
 
 semPaths(sem1, "mod","par", col=rainbow(7), style="lisrel", layout = "tree2",curve=1.5,curvePivot = TRUE,rotation = 2, label.cex=1.2, residuals = T, nDigits = 4, nCharNodes = 0, sizeMan = 10, sizeMan2 = 5)
 legend("topleft", legend=c("Consumo sustancia entre adolescentes dado por padres alcohólicos y psicopatologías"),col="blue",cex=1.0)
@@ -503,6 +502,7 @@ La estimación del modelo emplea el método bootstrap, como alternativa a las re
 
 Además, se emplean la paquetería \textit{lavaan} como principal instrumento de ajuste computaciones, y se usa la información de la matriz de correlación de Pearson, biserial y tetracórica, según corresponda el tipo de variable. Se tienen 20 grados de libertad, lo que corresponde a las parte de información. A continuación se muestra el código empleado.
 
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -556,6 +556,8 @@ summary(sem1, fit.measures = TRUE,standardized=T, rsquare = T)
 #Brinda los estimadores estandarizados y el aporte de variabilidad de cada variable al modelo
 
 \end{minted}
+```
+
 ```{r, echo=FALSE}
 
 # CorMid 
@@ -577,7 +579,7 @@ A fin de verificar el ajuste del modelo, se deben considerar los índices de bon
 
 En el modelo propuesto, la prueba de la $\chi^2$ rechaza la hipótesis nula, donde $H_{o} : Modelo\;Sí\;Ajusta$, es decir que el modelo no ajusta a los datos, debido a que el Pvalor es mucho menor que la significancia. Lo anterior se puede visualizar en la sección de \textit{User Model}. Cabe agregar que el modelo basal es mucho peor que el propuesto, donde este es el modelo nula, donde no hay asociación entre variables, ya que el \textit{Test statistic} representa el valor de la $\chi^2$.
 
-
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -594,6 +596,7 @@ Model Test Baseline Model:
   P-value                                        0.000
   
 \end{minted}
+```
 
 \begin{center}
 \begin{table}[h]
@@ -624,6 +627,7 @@ Model Test Baseline Model:
 
 En adición a lo anterior, en la función \textit{rsquare} brinda la medida de variabilidad que aporta cada variable independiente al modelo. El siguiente recuadro muestra el estimado. Se podría esperar que las variables en suma alcancen el 1 de variabilidad explicada, pero lo que explican es muy bajo. A lo más, la variable \textit{negaff} aporta poco más del 15\%.  
 
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -635,7 +639,7 @@ R-Square:
     peer              0.099
 
 \end{minted}
-
+```
 
 Por lo anterior es posible afirmar que el modelo, en general, no ajusta. Es decir, los datos no respaldan la teoría propuesta. Entonces, se sugiere modificar las relaciones entre variables, siempre y cuando esté mediada por conocimiento de área experta. 
 
@@ -651,6 +655,7 @@ Entonces, la graficación del modelo quedaría como sigue. Respecto a la forma d
 
 El siguiente \textit{output} de R muestra la estimación de los coeficientes, las covarianzas y varianzas de los parámetros estimados. Como se puede observar, solamente \textit{coa}  tiene una relación lineal significativa para la variable de Stress y Emotion, \textit{stress} y  \textit{emotion} a su vez son significativas para la variable Negaff, y finalmnete  \textit{negaff} es significativa para Peer, todas con un nivel de confianza del 95\%. Cabe recordar que la salida de \textit{Std.all} se interpreta como todas las variables estadarizadas, y  \textit{std. lv} como la estandarización sólamente de variables latentes. 
 
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -671,9 +676,11 @@ Regressions:
     negaff     (z)    0.176    0.033    5.412    0.000    0.176    0.315
 
 \end{minted}
+```
 
 Respecto a las asociaciones entre variables, sólamente la relación entre eventos estresantes y la falta de control de emociones ( \textit{stress} y  \textit{emotion} ) es significativa al 95\% .
 
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -688,9 +695,11 @@ Covariances:
   coa ~~                                                                
     age              -0.055    0.039   -1.400    0.162   -0.055   -0.076
 \end{minted}
+```
 
 La sección de \textbf{Interceptos} se interpreta como un $\beta_{0}$ en una regresión lineal. Es decir, dado que la variable independiente es cero, cuál es el valor de la respuesta. Por ejemplo, cuando todas las variables son 0, el coeficiente de peer es $Y_{peer} = -0.22$. Es decir, cuando los padres no son alcohólicos, se es mujer de 0 años, y no hay enfermedades psicolígicicas, el riesgo de relacionarse con sustancias adictivas es negativo. 
 
+```{r, eval=FALSE}
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 
@@ -705,8 +714,10 @@ Intercepts:
     age              12.718    0.081  156.060    0.000   12.718    8.788
     
 \end{minted}
-
+```
 Todas las varianzas son significativas. 
+
+```{r, eval=FALSE}
 
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
@@ -722,6 +733,7 @@ Variances:
     age               2.095    0.123   17.001    0.000    2.095    1.000
 
 \end{minted}
+```
 
 Respecto a la interpretación de los \textbf{efectos indirectos}, si  se menos estricto con la confianza del intervalo y la significancia es del 90\%, sólamente los efectos indirectos mediados entre la variable de padres alcohólicos, estrés, falta de control emocional, y percepción de ansiedad y depresión son significativas. 
 
@@ -747,6 +759,8 @@ Lo anterior implica que exclusivamente los efectos indirectos mostrados son sign
 
 Además, respecto a la magnitud de las asociaciones, es posible afirmar que el efecto indirecto entre el hecho de alcoholismo en padres y la percepción de ansiedad/depresión en jóvenes mediado por el estrés ($0.058$), es casi el doble que el efecto indirecto entre el hecho de alcoholismo en padres y la percepción de ansiedad/depresión en jóvenes mediado por el falta de control emocional ($0.032$). Lo que podría hacer pensar que eventos estresantes \textit{stress} genera más afiliación a sustancias adictiva. Lo anterior se reafirma con el efecto indirecto entre el alcoholismo de padres y la cercanía de sustancia adictivas mediado por estrés y ansiedad/depresión, con un efecto indirecto más alto ($0.018$) que el efecto de entre el alcoholismo de padres y la cercanía de sustancia adictivas mediado por falta de control emocional y ansiedad/depresión ($0.01$). Entonces, se podría concluir que \textit{stress} y \textit{coa} sí inciden de forma indirecta en \textit{peer}.
 
+```{r, eval=FALSE}
+
 \begin{minted}[frame=lines, linenos, fontsize=\small]
 {r}
 Defined Parameters:
@@ -762,6 +776,7 @@ Defined Parameters:
 
 
 \end{minted}
+```
 
 
 Respecto a la interpretación de los \textbf{efectos totales},  estos se definen como la suma entre efectos directos e indirectos. En esta sección, los efectos computados fueron la ruta que se indica a continuación:\\ 
@@ -771,14 +786,13 @@ $T2 := coa-emotion + coa*emotion*\text{negaff}+ coa*emotion*\text{negaff}*peer$\
 
 Con una confianza del 95\% solamente el efecto total (T1) es significativo, es decir que la suma de efectos directos e indirectos sí representan una asociación que se ajusta al modelo, esto para la ruta entre \textit{coa},  \textit{stress},  \textit{negaff}, y  \textit{peer}. 
 
-
-
+\begin{minted}[frame=lines, linenos, fontsize=\small]
+```{r, eval=FALSE}
 |Defined Parameters:
 |                   Estimate  Std.Err  z-value  P(>|z|)   |Std.lv  Std.all
 |    T1                0.582    0.103    5.658    0.000    |0.582    0.407
 |    T2                0.182    0.095    1.918    0.055    |0.182    0.151
-
-
+```
 
 Entonces, dalo lo anterior es posible afirmar que el modelo propuesto por la teoría no ajusta con los datos. Por tanto, se propone un nuevo modelo basado en el conocimiento de área que propone excluir al sexo \textit{gen} y la edad \textit{age} como prodectoras directas del estrés y falta de control emocional. Es decir, que el único afecto directo entre las exógenas provenga de si los padres son alcoholicos o no \textit{coa}.
 
